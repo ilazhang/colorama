@@ -42,7 +42,7 @@ def parse():
     mains = set(request.args.get("mains", "").split(","))
     complements = set(request.args.get("complements", "").split(","))
 
-    correct = mains == {"dark-brown", "brown"} and complements == {"terracotta"}
+    correct = mains == {"brown", "tan"} and complements == {"terracotta"}
 
     return render_template("quizanswer.html", correct=correct)
 
