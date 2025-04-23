@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 
 app = Flask(__name__)
 
@@ -23,13 +24,25 @@ quiz_qs = [
 def home():
     return render_template("index.html")
 
+
 @app.route("/learn")
 def learn():
     return render_template("learn.html")
 
+
 @app.route("/quiz")
 def quiz():
-   return render_template("quiz.html", question=quiz_qs[0])
+    return render_template("quiz.html", question=quiz_qs[0])
+
+
+@app.route("/quizanswer")
+def parse():
+    mains = set(request.args.get("mains", "").split(","))
+    complements = set(request.args.get("complements", "").split(","))
+
+    correct = mains == {"brown", "blue"} and complements == {"black"}
+
+    return render_template("quizanswer.html", correct=correct)
 
 
 if __name__ == "__main__":

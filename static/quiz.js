@@ -33,7 +33,22 @@ $(function () {
             const newClass = complementBaseClass + (i < complements.length ? ' ' + complements[i] : '');
             el.attr('class', newClass);
         });
+
+        const totalSlots = mainDisplays.length + complementDisplays.length;
+        const totalUsed = mains.length + complements.length;
+
+        if (totalUsed >= totalSlots) {
+            $('#continue').removeClass('d-none');
+        } else {
+            $('#continue').addClass('d-none');
+        }
     }
+
+    $('#continue').on('click', function () {
+        const mainsParam = mains.join(',');
+        const complementsParam = complements.join(',');
+        window.location.href = `/quizanswer?mains=${encodeURIComponent(mainsParam)}&complements=${encodeURIComponent(complementsParam)}`;
+    });
 
     $(".quizbox").draggable({
       revert: "invalid",

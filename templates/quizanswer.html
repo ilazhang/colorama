@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<script src="/static/learn.js"></script>
+<div class="p-4">
+{% if correct %}
+  correct
+{% else %}
+  incorrect
+{% endif %}
+</div>
+
+{% endblock %}
