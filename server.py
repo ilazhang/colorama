@@ -11,12 +11,12 @@ quiz_qs = [
         "choices": [
             {"image": "/static/blue_shirt.jpg", "color": "blue"},
             {"image": "/static/black_leather_jacket.webp", "color": "black"},
-            {"image": "/static/carhartt_jacket.webp", "color": "brown"},
+            {"image": "/static/carhartt_jacket.webp", "color": "tan"},
             {"image": "/static/jorts.jpg", "color": "blue"},
             {"image": "/static/white_pants.webp", "color": "white"},
             {"image": "/static/yellow_shirt.jpg", "color": "yellow"},
             {"image": "/static/terracotta_hoodie.jpg", "color": "terracotta"},
-            {"image": "/static/carhartt_pants.jpg", "color": "dark-brown"},
+            {"image": "/static/carhartt_pants.jpg", "color": "brown"},
         ],
     },
 ]
