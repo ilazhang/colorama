@@ -1,6 +1,8 @@
 $(function () {
     const mains = [];
     const complements = [];
+    const mainBaseClass = 'border border-dark rounded-circle main-display';
+    const complementBaseClass = 'border border-dark rounded-circle complement-display';
 
     function storeState() {
         mains.length = 0;
@@ -22,22 +24,17 @@ $(function () {
 
         mainDisplays.each(function (i) {
             const el = $(this);
-            const baseClasses = el.attr('class').split(' ').filter(c => c !== undefined && !mains.includes(c));
-            el.attr('class', baseClasses.join(' '));
-            if (i < mains.length) {
-                el.addClass(mains[i]);
-            }
+            const newClass = mainBaseClass + (i < mains.length ? ' ' + mains[i] : '');
+            el.attr('class', newClass);
         });
 
         complementDisplays.each(function (i) {
             const el = $(this);
-            const baseClasses = el.attr('class').split(' ').filter(c => c !== undefined && !complements.includes(c));
-            el.attr('class', baseClasses.join(' '));
-            if (i < complements.length) {
-                el.addClass(complements[i]);
-            }
+            const newClass = complementBaseClass + (i < complements.length ? ' ' + complements[i] : '');
+            el.attr('class', newClass);
         });
     }
+
     $(".quizbox").draggable({
       revert: "invalid",
       helper: "original",
