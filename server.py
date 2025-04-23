@@ -15,6 +15,8 @@ quiz_qs = [
             {"image": "/static/jorts.jpg", "color": "blue"},
             {"image": "/static/white_pants.webp", "color": "white"},
             {"image": "/static/yellow_shirt.jpg", "color": "yellow"},
+            {"image": "/static/terracotta_hoodie.jpg", "color": "terracotta"},
+            {"image": "/static/carhartt_pants.jpg", "color": "dark-brown"},
         ],
     },
 ]
@@ -40,7 +42,7 @@ def parse():
     mains = set(request.args.get("mains", "").split(","))
     complements = set(request.args.get("complements", "").split(","))
 
-    correct = mains == {"brown", "blue"} and complements == {"black"}
+    correct = mains == {"dark-brown", "brown"} and complements == {"terracotta"}
 
     return render_template("quizanswer.html", correct=correct)
 

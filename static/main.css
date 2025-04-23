@@ -36,6 +36,14 @@
     background-color: #8B5A2B;
 }
 
+.terracotta {
+    background-color: #c25b32;
+}
+
+.dark-brown {
+    background-color: #524137;
+}
+
 .colorama-container {
     display: flex;
     flex-direction: column;
