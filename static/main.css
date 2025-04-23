@@ -69,7 +69,7 @@
 
 #learn-button {
     background-color: #A4C6E4;
-    color: black;
+    color:black; 
     border: .175rem solid #18365e;
     border-radius: 1rem;
     padding: 1.5rem 5rem;
@@ -77,9 +77,9 @@
 }
 
 #quiz-button {
-    color: black;
     background-color: #f4f1e6;
-    border: 3px solid #18365e;
+    color:black; 
+    border: .175rem solid #18365e;
     border-radius: 1rem;
     padding: 1.5rem 5rem;
     font-size: 1.25rem;
