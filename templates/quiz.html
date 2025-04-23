@@ -11,12 +11,12 @@
   <div class="container mb-5">
     <div class="row">
       <div class="col-md-6 d-flex flex-column align-items-center gap-3">
-        <div id="mains" class="position-relative d-flex border text-center border-dark w-75 py-4 gap-1 px-1">
+        <div id="mains" class="position-relative d-flex border text-center border-dark w-75 align-items-center gap-3 px-3">
           <div class="position-absolute w-100 h-100 z-n1 start-0 top-0 d-flex justify-content-center align-items-center">
               Mains
           </div>
         </div>
-        <div id="complements" class="position-relative d-flex border text-center border-dark w-75 py-4 gap-1 px-1">
+        <div id="complements" class="position-relative d-flex border text-center border-dark w-75 align-items-center gap-3 px-3">
           <div class="position-absolute w-100 h-100 z-n1 start-0 top-0 d-flex justify-content-center align-items-center">
               Complements
           </div>
@@ -26,22 +26,24 @@
         <div class="mb-4">
           <p><strong>Mains:</strong></p>
           <div class="d-flex gap-3">
-            <div class="border border-dark rounded-circle" style="width: 100px; height: 100px;"></div>
-            <div class="border border-dark rounded-circle" style="width: 100px; height: 100px;"></div>
+            <div class="border border-dark rounded-circle main-display" style="width: 100px; height: 100px;"></div>
+            <div class="border border-dark rounded-circle main-display" style="width: 100px; height: 100px;"></div>
           </div>
         </div>
         <div>
           <p><strong>Complements:</strong></p>
-          <div class="border border-dark rounded-circle" style="width: 60px; height: 60px;"></div>
+          <div class="border border-dark rounded-circle complement-display" style="width: 60px; height: 60px;"></div>
         </div>
       </div>
     </div>
   </div>
 
-<div class="d-flex flex-wrap justify-content-center gap-3">
-  <div class="flex-shrink-0 quizbox"></div>
-  <div class="flex-shrink-0 quizbox"></div>
-  <div class="flex-shrink-0 quizbox"></div>
+<div id="closet" class="d-flex flex-wrap justify-content-center gap-3 bg-light p-4">
+    {% for choice in question['choices'] %}
+    <div class="flex-shrink-0 quizbox" data-color="{{ choice.color }}">
+        <img src="{{ choice.image }}" class="w-100 h-100 object-fit-cover"/></img>
+    </div>
+    {% endfor %}
 </div>
 
 </div>

@@ -1,7 +1,37 @@
 /* css goes here n shi */
 
 .quizbox {
-    width: 4rem; 
-    height: 4rem; 
+    width: 6rem; 
+    height: 6rem; 
     border: 1px solid #000;
+}
+
+#mains, #complements {
+    height: 8rem;
+}
+
+#closet {
+    height: 8rem;
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.black {
+    background-color: black;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.brown {
+    background-color: #8B5A2B;
+}
+
+.white {
+    background-color: #8B5A2B;
 }
