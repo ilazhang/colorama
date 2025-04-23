@@ -23,10 +23,13 @@ quiz_qs = [
 def home():
     return render_template("index.html")
 
+@app.route("/learn")
+def learn():
+    return render_template("learn.html")
 
 @app.route("/quiz")
 def quiz():
-    return render_template("quiz.html", question=quiz_qs[0])
+   return render_template("quiz.html", question=quiz_qs[0])
 
 
 if __name__ == "__main__":
