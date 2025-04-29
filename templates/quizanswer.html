@@ -3,12 +3,59 @@
 {% block content %}
 
 <script src="/static/learn.js"></script>
-<div class="p-4">
-{% if correct %}
-  correct
-{% else %}
-  incorrect
-{% endif %}
+<div class="container p-4">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-4">Quiz Results</h2>
+      
+      {% if correct %}
+        <div class="alert alert-success">
+          <h4>Correct! 🎉</h4>
+          <p>You've correctly identified all the main colors and complementary colors.</p>
+        </div>
+      {% else %}
+        <div class="alert alert-danger">
+          <h4>Not quite right</h4>
+          <p>Let's see what you got right and wrong:</p>
+        </div>
+      {% endif %}
+      
+      <div class="card mb-3">
+        <div class="card-header {% if mains_correct %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+          Main Colors
+        </div>
+        <div class="card-body">
+          <p>Your selection: {{ ', '.join(user_mains)|default('None', true) }}</p>
+          <p>Expected: {{ ', '.join(expected_mains) }}</p>
+          {% if mains_correct %}
+            <p class="text-success">✓ Correct!</p>
+          {% else %}
+            <p class="text-danger">✗ Incorrect</p>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-header {% if complements_correct %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
+          Complementary Colors
+        </div>
+        <div class="card-body">
+          <p>Your selection: {{ ', '.join(user_complements)|default('None', true) }}</p>
+          <p>Expected: {{ ', '.join(expected_complements) }}</p>
+          {% if complements_correct %}
+            <p class="text-success">✓ Correct!</p>
+          {% else %}
+            <p class="text-danger">✗ Incorrect</p>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="mt-4">
+        <a href="/quiz" class="btn btn-primary">Try Again</a>
+        <a href="/learn" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 {% endblock %}

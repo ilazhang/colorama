@@ -42,9 +42,23 @@ def parse():
     mains = set(request.args.get("mains", "").split(","))
     complements = set(request.args.get("complements", "").split(","))
 
-    correct = mains == {"brown", "tan"} and complements == {"terracotta"}
+    expected_mains = {"brown", "tan"}
+    expected_complements = {"terracotta"}
 
-    return render_template("quizanswer.html", correct=correct)
+    mains_correct = mains == expected_mains
+    complements_correct = complements == expected_complements
+    correct = mains_correct and complements_correct
+
+    return render_template(
+        "quizanswer.html", 
+        correct=correct,
+        mains_correct=mains_correct,
+        complements_correct=complements_correct,
+        user_mains=mains,
+        user_complements=complements,
+        expected_mains=expected_mains,
+        expected_complements=expected_complements
+    )
 
 
 if __name__ == "__main__":
