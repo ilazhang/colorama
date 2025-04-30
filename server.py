@@ -66,7 +66,7 @@ def learn():
 
 @app.route("/quiz")
 def quiz():
-    # Initialize or reset the quiz
+    # Get question_id from query parameter
     question_id = request.args.get('question_id', type=int)
     
     if not question_id:
