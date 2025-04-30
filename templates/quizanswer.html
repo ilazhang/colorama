@@ -50,8 +50,27 @@
         </div>
       </div>
       
+      {% if description %}
+      <div class="card mt-3">
+        <div class="card-header bg-info text-white">
+          Color Palette
+        </div>
+        <div class="card-body">
+          <p>{{ description }}</p>
+        </div>
+      </div>
+      {% endif %}
+      
       <div class="mt-4">
-        <a href="/quiz" class="btn btn-primary">Try Again</a>
+        {% if is_last %}
+          <div class="alert alert-info">
+            <h4>Quiz Complete!</h4>
+            <p>You got {{ final_score.correct }} out of {{ final_score.total }} questions correct.</p>
+          </div>
+          <a href="/quiz" class="btn btn-primary">Start Over</a>
+        {% else %}
+          <a href="/quiz?question_id={{ next_question_id }}" class="btn btn-primary">Next Question</a>
+        {% endif %}
         <a href="/learn" class="btn btn-secondary">Learn More</a>
       </div>
     </div>
