@@ -25,22 +25,28 @@
           Main Colors
         </div>
         <div class="card-body">
-          <p>Your selection: 
+          <p>Your selection:</p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
             {% for item_id in user_mains %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                {{ item.name }}{% if not loop.last %}, {% endif %}
+                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
+                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
+                </div>
               {% endfor %}
             {% else %}
-              None
+              <span class="fst-italic">None selected</span>
             {% endfor %}
-          </p>
-          <p>Expected: 
+          </div>
+          <p>Expected:</p>
+          <div class="d-flex flex-wrap gap-2">
             {% for item_id in expected_mains %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                {{ item.name }}{% if not loop.last %}, {% endif %}
+                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
+                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
+                </div>
               {% endfor %}
             {% endfor %}
-          </p>
+          </div>
           {% if mains_correct %}
             <p class="text-success">✓ Correct!</p>
           {% else %}
@@ -54,22 +60,28 @@
           Complementary Colors
         </div>
         <div class="card-body">
-          <p>Your selection: 
+          <p>Your selection:</p>
+          <div class="d-flex flex-wrap gap-2 mb-3">
             {% for item_id in user_complements %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                {{ item.name }}{% if not loop.last %}, {% endif %}
+                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
+                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
+                </div>
               {% endfor %}
             {% else %}
-              None
+              <span class="fst-italic">None selected</span>
             {% endfor %}
-          </p>
-          <p>Expected: 
+          </div>
+          <p>Expected:</p>
+          <div class="d-flex flex-wrap gap-2">
             {% for item_id in expected_complements %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                {{ item.name }}{% if not loop.last %}, {% endif %}
+                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
+                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
+                </div>
               {% endfor %}
             {% endfor %}
-          </p>
+          </div>
           {% if complements_correct %}
             <p class="text-success">✓ Correct!</p>
           {% else %}
