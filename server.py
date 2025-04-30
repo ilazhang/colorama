@@ -18,8 +18,8 @@ clothing_items = {
     8: {"id": 8, "image": "/static/carhartt_pants.jpg", "color": "brown", "name": "Brown Pants"},
     9: {"id": 9, "image": "/static/cream_shirt.webp", "color": "cream", "name": "Cream Shirt"},
     10: {"id": 10, "image": "/static/grey_sweats.jpg", "color": "grey", "name": "Grey Sweatpants"},
-    11: {"id": 11, "image": "/static/light_green_sweats.jpg", "color": "light green", "name": "Light Green Sweatpants"},
-    12: {"id": 12, "image": "/static/light_pink_pants.jpg", "color": "light pink", "name": "Light Pink Pants"},
+    11: {"id": 11, "image": "/static/light_green_sweats.jpg", "color": "light-green", "name": "Light Green Sweatpants"},
+    12: {"id": 12, "image": "/static/light_pink_pants.jpg", "color": "light-pink", "name": "Light Pink Pants"},
     13: {"id": 13, "image": "/static/maroon_scarf.jpg", "color": "maroon", "name": "Maroon Scarf"},
     14: {"id": 14, "image": "/static/shorts.jpg", "color": "black", "name": "Black Shorts"},
 }
@@ -49,6 +49,22 @@ quiz_qs = [
         "expected_mains": {2, 5},  # Black Leather Jacket, White Pants
         "expected_complements": {1},  # Blue Shirt
         "description": "Monochrome with accent"
+    },
+    {
+        "id": 4,
+        "mains": 2,
+        "complements": 1,
+        "expected_mains": {9, 10},  # Cream Shirt, Grey Sweatpants
+        "expected_complements": {13},  # Maroon Scarf
+        "description": "Neutral base with pop of color"
+    },
+    {
+        "id": 5,
+        "mains": 2,
+        "complements": 1,
+        "expected_mains": {11, 14},  # Light Green Sweatpants, Black Shorts
+        "expected_complements": {12},  # Light Pink Pants
+        "description": "Sporty casual with pastel accent"
     }
 ]
 

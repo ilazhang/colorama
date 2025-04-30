@@ -33,6 +33,32 @@
     background-color: #ffffff;
 }
 
+/* New color classes for added clothing items */
+.cream {
+    background-color: #FFFDD0;
+    color: black;
+}
+
+.grey {
+    background-color: #AAAAAA;
+    color: black;
+}
+
+.light-green {
+    background-color: #90EE90;
+    color: black;
+}
+
+.light-pink {
+    background-color: #FFB6C1;
+    color: black;
+}
+
+.maroon {
+    background-color: #800000;
+    color: white;
+}
+
 .colorama-container {
     display: flex;
     flex-direction: column;
