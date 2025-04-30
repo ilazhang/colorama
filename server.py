@@ -65,10 +65,8 @@ def learn():
 
 
 @app.route("/quiz")
-def quiz():
-    # Get question_id from query parameter
-    question_id = request.args.get('question_id', type=int)
-    
+@app.route("/quiz/<int:question_id>")
+def quiz(question_id=None):
     if not question_id:
         # Start with the first question
         session['current_question'] = 1

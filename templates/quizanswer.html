@@ -69,7 +69,7 @@
           </div>
           <a href="/quiz" class="btn btn-primary">Start Over</a>
         {% else %}
-          <a href="/quiz?question_id={{ next_question_id }}" class="btn btn-primary">Next Question</a>
+          <a href="/quiz/{{ next_question_id }}" class="btn btn-primary">Next Question</a>
         {% endif %}
         <a href="/learn" class="btn btn-secondary">Learn More</a>
       </div>
