@@ -16,6 +16,12 @@ clothing_items = {
     6: {"id": 6, "image": "/static/yellow_shirt.jpg", "color": "yellow", "name": "Yellow Shirt"},
     7: {"id": 7, "image": "/static/terracotta_hoodie.jpg", "color": "terracotta", "name": "Terracotta Hoodie"},
     8: {"id": 8, "image": "/static/carhartt_pants.jpg", "color": "brown", "name": "Brown Pants"},
+    9: {"id": 9, "image": "/static/cream_shirt.webp", "color": "cream", "name": "Cream Shirt"},
+    10: {"id": 10, "image": "/static/grey_sweats.jpg", "color": "grey", "name": "Grey Sweatpants"},
+    11: {"id": 11, "image": "/static/light_green_sweats.jpg", "color": "light green", "name": "Light Green Sweatpants"},
+    12: {"id": 12, "image": "/static/light_pink_pants.jpg", "color": "light pink", "name": "Light Pink Pants"},
+    13: {"id": 13, "image": "/static/maroon_scarf.jpg", "color": "maroon", "name": "Maroon Scarf"},
+    14: {"id": 14, "image": "/static/shorts.jpg", "color": "black", "name": "Black Shorts"},
 }
 
 # Quiz database with multiple questions
