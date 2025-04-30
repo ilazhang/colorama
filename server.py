@@ -6,22 +6,24 @@ from flask import session, redirect, url_for
 app = Flask(__name__)
 app.secret_key = 'fashion_quiz_secret_key'  # Required for session
 
+# Clothing items database
+clothing_items = [
+    {"image": "/static/blue_shirt.jpg", "color": "blue"},
+    {"image": "/static/black_leather_jacket.webp", "color": "black"},
+    {"image": "/static/carhartt_jacket.webp", "color": "tan"},
+    {"image": "/static/jorts.jpg", "color": "blue"},
+    {"image": "/static/white_pants.webp", "color": "white"},
+    {"image": "/static/yellow_shirt.jpg", "color": "yellow"},
+    {"image": "/static/terracotta_hoodie.jpg", "color": "terracotta"},
+    {"image": "/static/carhartt_pants.jpg", "color": "brown"},
+]
+
 # Quiz database with multiple questions
 quiz_qs = [
     {
         "id": 1,
         "mains": 2,
         "complements": 1,
-        "choices": [
-            {"image": "/static/blue_shirt.jpg", "color": "blue"},
-            {"image": "/static/black_leather_jacket.webp", "color": "black"},
-            {"image": "/static/carhartt_jacket.webp", "color": "tan"},
-            {"image": "/static/jorts.jpg", "color": "blue"},
-            {"image": "/static/white_pants.webp", "color": "white"},
-            {"image": "/static/yellow_shirt.jpg", "color": "yellow"},
-            {"image": "/static/terracotta_hoodie.jpg", "color": "terracotta"},
-            {"image": "/static/carhartt_pants.jpg", "color": "brown"},
-        ],
         "expected_mains": {"brown", "tan"},
         "expected_complements": {"terracotta"},
         "description": "Earth tones palette"
@@ -30,16 +32,6 @@ quiz_qs = [
         "id": 2,
         "mains": 2,
         "complements": 1,
-        "choices": [
-            {"image": "/static/blue_shirt.jpg", "color": "blue"},
-            {"image": "/static/black_leather_jacket.webp", "color": "black"},
-            {"image": "/static/carhartt_jacket.webp", "color": "tan"},
-            {"image": "/static/jorts.jpg", "color": "blue"},
-            {"image": "/static/white_pants.webp", "color": "white"},
-            {"image": "/static/yellow_shirt.jpg", "color": "yellow"},
-            {"image": "/static/terracotta_hoodie.jpg", "color": "terracotta"},
-            {"image": "/static/carhartt_pants.jpg", "color": "brown"},
-        ],
         "expected_mains": {"blue", "white"},
         "expected_complements": {"yellow"},
         "description": "Cool blues palette"
@@ -48,16 +40,6 @@ quiz_qs = [
         "id": 3,
         "mains": 2,
         "complements": 1,
-        "choices": [
-            {"image": "/static/blue_shirt.jpg", "color": "blue"},
-            {"image": "/static/black_leather_jacket.webp", "color": "black"},
-            {"image": "/static/carhartt_jacket.webp", "color": "tan"},
-            {"image": "/static/jorts.jpg", "color": "blue"},
-            {"image": "/static/white_pants.webp", "color": "white"},
-            {"image": "/static/yellow_shirt.jpg", "color": "yellow"},
-            {"image": "/static/terracotta_hoodie.jpg", "color": "terracotta"},
-            {"image": "/static/carhartt_pants.jpg", "color": "brown"},
-        ],
         "expected_mains": {"black", "white"},
         "expected_complements": {"blue"},
         "description": "Monochrome with accent"
@@ -101,9 +83,13 @@ def quiz():
             return redirect(url_for('quiz'))
         session['current_question'] = question_id
     
+    # Add clothing items to the question
+    question_with_items = question.copy()
+    question_with_items['choices'] = clothing_items
+    
     return render_template(
         "quiz.html", 
-        question=question,
+        question=question_with_items,
         current=session.get('current_question', 1),
         total=session.get('total_questions', len(quiz_qs))
     )
