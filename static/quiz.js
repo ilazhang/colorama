@@ -9,11 +9,11 @@ $(function () {
         complements.length = 0;
 
         $('#mains .quizbox').each(function () {
-            mains.push($(this).data('color'));
+            mains.push($(this).data('id'));
         });
 
         $('#complements .quizbox').each(function () {
-            complements.push($(this).data('color'));
+            complements.push($(this).data('id'));
         });
 
         console.log('Mains:', mains);
@@ -24,14 +24,24 @@ $(function () {
 
         mainDisplays.each(function (i) {
             const el = $(this);
-            const newClass = mainBaseClass + (i < mains.length ? ' ' + mains[i] : '');
-            el.attr('class', newClass);
+            if (i < mains.length) {
+                const color = $('#mains .quizbox').eq(i).data('color');
+                const newClass = mainBaseClass + ' ' + color;
+                el.attr('class', newClass);
+            } else {
+                el.attr('class', mainBaseClass);
+            }
         });
 
         complementDisplays.each(function (i) {
             const el = $(this);
-            const newClass = complementBaseClass + (i < complements.length ? ' ' + complements[i] : '');
-            el.attr('class', newClass);
+            if (i < complements.length) {
+                const color = $('#complements .quizbox').eq(i).data('color');
+                const newClass = complementBaseClass + ' ' + color;
+                el.attr('class', newClass);
+            } else {
+                el.attr('class', complementBaseClass);
+            }
         });
 
         const totalSlots = mainDisplays.length + complementDisplays.length;

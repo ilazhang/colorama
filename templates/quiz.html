@@ -41,8 +41,8 @@
 
 <div id="closet" class="d-flex flex-wrap justify-content-center gap-3 bg-light p-4">
     {% for choice in question['choices'] %}
-    <div class="flex-shrink-0 quizbox" data-color="{{ choice.color }}">
-        <img src="{{ choice.image }}" class="w-100 h-100 object-fit-cover"/></img>
+    <div class="flex-shrink-0 quizbox" data-id="{{ choice.id }}" data-color="{{ choice.color }}">
+        <img src="{{ choice.image }}" class="w-100 h-100 object-fit-cover" title="{{ choice.name }}"/></img>
     </div>
     {% endfor %}
 </div>

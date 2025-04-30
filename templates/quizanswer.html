@@ -25,8 +25,22 @@
           Main Colors
         </div>
         <div class="card-body">
-          <p>Your selection: {{ ', '.join(user_mains)|default('None', true) }}</p>
-          <p>Expected: {{ ', '.join(expected_mains) }}</p>
+          <p>Your selection: 
+            {% for item_id in user_mains %}
+              {% for item in clothing_items.values() if item.id == item_id %}
+                {{ item.name }}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            {% else %}
+              None
+            {% endfor %}
+          </p>
+          <p>Expected: 
+            {% for item_id in expected_mains %}
+              {% for item in clothing_items.values() if item.id == item_id %}
+                {{ item.name }}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </p>
           {% if mains_correct %}
             <p class="text-success">✓ Correct!</p>
           {% else %}
@@ -40,8 +54,22 @@
           Complementary Colors
         </div>
         <div class="card-body">
-          <p>Your selection: {{ ', '.join(user_complements)|default('None', true) }}</p>
-          <p>Expected: {{ ', '.join(expected_complements) }}</p>
+          <p>Your selection: 
+            {% for item_id in user_complements %}
+              {% for item in clothing_items.values() if item.id == item_id %}
+                {{ item.name }}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            {% else %}
+              None
+            {% endfor %}
+          </p>
+          <p>Expected: 
+            {% for item_id in expected_complements %}
+              {% for item in clothing_items.values() if item.id == item_id %}
+                {{ item.name }}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </p>
           {% if complements_correct %}
             <p class="text-success">✓ Correct!</p>
           {% else %}
