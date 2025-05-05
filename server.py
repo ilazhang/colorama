@@ -32,7 +32,8 @@ quiz_qs = [
         "complements": 1,
         "expected_mains": {8, 3},  # Brown Pants, Tan Jacket
         "expected_complements": {7},  # Terracotta Hoodie
-        "description": "Earth tones palette"
+        "description": "Earth tones palette",
+        "available_items": [3, 7, 8, 9, 10, 13]  # Limited selection of items for this question
     },
     {
         "id": 2,
@@ -40,7 +41,8 @@ quiz_qs = [
         "complements": 1,
         "expected_mains": {1, 5},  # Blue Shirt, White Pants
         "expected_complements": {6},  # Yellow Shirt
-        "description": "Cool blues palette"
+        "description": "Cool blues palette",
+        "available_items": [1, 4, 5, 6, 11, 14]  # Limited selection of items for this question
     },
     {
         "id": 3,
@@ -48,7 +50,8 @@ quiz_qs = [
         "complements": 1,
         "expected_mains": {2, 5},  # Black Leather Jacket, White Pants
         "expected_complements": {1},  # Blue Shirt
-        "description": "Monochrome with accent"
+        "description": "Monochrome with accent",
+        "available_items": [1, 2, 5, 10, 14]  # Limited selection of items for this question
     },
     {
         "id": 4,
@@ -56,7 +59,8 @@ quiz_qs = [
         "complements": 1,
         "expected_mains": {9, 10},  # Cream Shirt, Grey Sweatpants
         "expected_complements": {13},  # Maroon Scarf
-        "description": "Neutral base with pop of color"
+        "description": "Neutral base with pop of color",
+        "available_items": [2, 9, 10, 12, 13]  # Limited selection of items for this question
     },
     {
         "id": 5,
@@ -64,7 +68,8 @@ quiz_qs = [
         "complements": 1,
         "expected_mains": {11, 14},  # Light Green Sweatpants, Black Shorts
         "expected_complements": {12},  # Light Pink Pants
-        "description": "Sporty casual with pastel accent"
+        "description": "Sporty casual with pastel accent",
+        "available_items": [6, 11, 12, 14, 4, 10]  # Limited selection of items for this question
     }
 ]
 
@@ -103,9 +108,10 @@ def quiz(question_id=None):
             return redirect(url_for('quiz'))
         session['current_question'] = question_id
     
-    # Add clothing items to the question
+    # Add only the specified clothing items to the question
     question_with_items = question.copy()
-    question_with_items['choices'] = list(clothing_items.values())
+    available_item_ids = question.get('available_items', list(clothing_items.keys()))
+    question_with_items['choices'] = [clothing_items[item_id] for item_id in available_item_ids if item_id in clothing_items]
     
     return render_template(
         "quiz.html", 
