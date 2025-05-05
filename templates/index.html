@@ -1,13 +1,23 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="colorama-container">
-    <h1 class="colorama-title">COLORAMA</h1>
-    <p class="colorama-subtitle">Learn colors for Men's Fashion</p>
+<div class="container-fluid p-0 m-0">
+    <div class="row no-gutters full-height-row">
+        <div class="col-md-9 d-flex align-items-center justify-content-center default-bg">
+            <div class="colorama-container">
+                <h1 class="colorama-title">COLORAMA</h1>
+                <p class="colorama-subtitle">Learn colors for Men's Fashion</p>
 
-    <div class="colorama-buttons">
-        <a href="{{ url_for('learn') }}" id="learn-button" class="btn btn-lg btn-primary rounded-pill px-5">Learn</a>
-        <a href="{{ url_for('quiz') }}" id="quiz-button" class="btn btn-lg btn-outline-primary rounded-pill px-5">Take the Quiz</a>
+                <div class="colorama-buttons">
+                    <a href="{{ url_for('learn') }}" id="learn-button" class="btn btn-lg btn-primary rounded-pill px-5">Learn</a>
+                    <a href="{{ url_for('quiz') }}" id="quiz-button" class="btn btn-lg btn-outline-primary rounded-pill px-5">Take the Quiz</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3 p-0">
+            <img src="{{ url_for('static', filename='palette.png') }}" alt="Color Palette" class="img-fluid full-height-img">
+          </div>
     </div>
 </div>
 
