@@ -2,7 +2,44 @@
 
 {% block content %}
 
-<script src="/static/learn.js"></script>
+<style>
+  .color-circle-large, .color-circle-small {
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .color-circle-large {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .color-circle-small {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .color-label {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  
+  /* Earth tone colors */
+  .olive { background-color: #808000; }
+  .tan { background-color: #D2B48C; }
+  .brown { background-color: #8B4513; }
+  .dark-green { background-color: #006400; }
+  .rose { background-color: #FF8080; }
+  .terracotta { background-color: #E2725B; }
+</style>
 <div class="default-bg">
   <div class="p-4">
     <div class="text-center mb-4">
@@ -13,28 +50,16 @@
     <div class="container mb-5">
       <h4 class="text-center mb-3">Mains</h4>
       <div class="d-flex justify-content-center gap-5 mb-5">
-        <div class="color-circle-large olive">
-          <div class="color-label">Olive</div>
-        </div>
-        <div class="color-circle-large tan">
-          <div class="color-label">Tan</div>
-        </div>
-        <div class="color-circle-large brown">
-          <div class="color-label">Brown</div>
-        </div>
+        <div class="color-circle-large olive" data-color-name="Olive"></div>
+        <div class="color-circle-large tan" data-color-name="Tan"></div>
+        <div class="color-circle-large brown" data-color-name="Brown"></div>
       </div>
       
       <h4 class="text-center mb-3">Accents</h4>
       <div class="d-flex justify-content-center gap-4 mb-4">
-        <div class="color-circle-small dark-green">
-          <div class="color-label">Dark Green</div>
-        </div>
-        <div class="color-circle-small rose">
-          <div class="color-label">Rose</div>
-        </div>
-        <div class="color-circle-small terracotta">
-          <div class="color-label">Terracotta</div>
-        </div>
+        <div class="color-circle-small dark-green" data-color-name="Dark Green"></div>
+        <div class="color-circle-small rose" data-color-name="Rose"></div>
+        <div class="color-circle-small terracotta" data-color-name="Terracotta"></div>
       </div>
     </div>
     
