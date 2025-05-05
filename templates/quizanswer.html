@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<script src="/static/learn.js"></script>
+<script src="/static/quiz.js"></script>
 <div class="container p-4">
   <div class="row">
     <div class="col-12">
@@ -29,9 +29,7 @@
           <div class="d-flex flex-wrap gap-2 mb-3">
             {% for item_id in user_mains %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
-                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
-                </div>
+                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
               {% endfor %}
             {% else %}
               <span class="fst-italic">None selected</span>
@@ -41,9 +39,7 @@
           <div class="d-flex flex-wrap gap-2">
             {% for item_id in expected_mains %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
-                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
-                </div>
+                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
               {% endfor %}
             {% endfor %}
           </div>
@@ -64,9 +60,7 @@
           <div class="d-flex flex-wrap gap-2 mb-3">
             {% for item_id in user_complements %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
-                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
-                </div>
+                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
               {% endfor %}
             {% else %}
               <span class="fst-italic">None selected</span>
@@ -76,9 +70,7 @@
           <div class="d-flex flex-wrap gap-2">
             {% for item_id in expected_complements %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="border" style="width: 80px; height: 80px;" title="{{ item.name }}">
-                  <img src="{{ item.image }}" class="w-100 h-100 object-fit-cover" alt="{{ item.name }}">
-                </div>
+                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
               {% endfor %}
             {% endfor %}
           </div>
