@@ -73,6 +73,125 @@ quiz_qs = [
     }
 ]
 
+#Route from palette lesson to main color lesson
+
+@app.route('/color-detail')
+
+def color_detail():
+    palette = request.args.get('palette', '')
+    color = request.args.get('color', '')
+    color_name = request.args.get('name', '')
+    
+    back_url = url_for('learn') + '?lesson=1'
+    
+    if palette == 'earth':
+        back_url = url_for('learn') + '?lesson=1'
+        palette_title = 'Earth Tones'
+    elif palette == 'pastel':
+        back_url = url_for('learn') + '?lesson=2'
+        palette_title = 'Pastel Colors'
+    elif palette == 'monochrome':
+        back_url = url_for('learn') + '?lesson=3'
+        palette_title = 'Monochrome Colors'
+    elif palette == 'jewel':
+        back_url = url_for('learn') + '?lesson=4'
+        palette_title = 'Jewel Tones'
+    else:
+        palette_title = 'Color Detail'
+    
+    #descriptions - optional?
+    color_descriptions = {
+        'olive': 'A muted green with hints of brown, perfect for creating a natural look.',
+        'tan': 'A light brown shade that evokes sand and natural fibers, versatile for earth toned palettes and more.',
+        'brown': 'A rich, deep brown reminiscent of wood and leather, creates a strong foundation for outfits.',
+        'dark-green': 'A deep forest green that adds richness and depth to earth tone palettes.',
+        'rose': 'A soft, muted pink that adds warmth and subtle contrast to earth tones.',
+        'terracotta': 'A warm, reddish-brown inspired by clay pottery, creates a rustic accent.',
+        
+        'pink': 'A soft, delicate pink that adds a gentle touch of color to any outfit.',
+        'baby-blue': 'A light, airy blue that evokes calm and serenity, perfect for spring and summer.',
+        'light-yellow': 'A soft, buttery yellow that brings warmth and cheerfulness to your wardrobe.',
+        'lavender': 'A gentle purple that adds a relaxed, romantic quality to pastel palettes.',
+        'white': 'A clean neutral that brightens and freshens pastel color combinations.',
+        'light-green': 'A soft mint green that adds a refreshing, natural element to pastel looks.',
+        
+        'pure-white': 'The brightest white, forming the foundation of monochrome palettes with clean lines.',
+        'light-gray': 'A subtle gray that adds dimension without overwhelming a monochrome look.',
+        'medium-gray': 'A balanced neutral that bridges between darker and lighter monochrome elements.',
+        'dark-gray': 'A deep gray that adds drama and contrast to monochrome palettes.',
+        'pure-black': 'The absence of color, creating sharp contrast and bold definition.',
+        'charcoal': 'A rich, deep gray with subtle warmth, softer than pure black but equally sophisticated.',
+        
+        'ruby': 'A deep, rich red inspired by the precious gemstone, adds luxury and warmth.',
+        'emerald': 'A vibrant green with depth and richness, creating a bold statement in any outfit.',
+        'sapphire': 'A deep, royal blue that conveys elegance and timeless sophistication.',
+        'plum': 'A rich purple with depth and complexity, balancing between red and blue undertones.',
+        'dark-gold': 'A deep, burnished gold that adds rich warmth and luxury without being flashy.',
+        'deep-teal': 'A rich blue-green that combines the depth of blue with the vibrancy of green.'
+    }
+    
+    color_description = color_descriptions.get(color, 'A versatile color that works well in many combinations.')
+    
+    next_colors = {
+        'earth': {
+            'olive': {'color': 'tan', 'name': 'Tan'},
+            'tan': {'color': 'brown', 'name': 'Brown'},
+            'brown': {'color': 'olive', 'name': 'Olive'},
+            'dark-green': {'color': 'rose', 'name': 'Rose'},
+            'rose': {'color': 'terracotta', 'name': 'Terracotta'},
+            'terracotta': {'color': 'dark-green', 'name': 'Dark Green'}
+        },
+        'pastel': {
+            'pink': {'color': 'baby-blue', 'name': 'Baby Blue'},
+            'baby-blue': {'color': 'light-yellow', 'name': 'Light Yellow'},
+            'light-yellow': {'color': 'pink', 'name': 'Pink'},
+            'lavender': {'color': 'white', 'name': 'White'},
+            'white': {'color': 'light-green', 'name': 'Light Green'},
+            'light-green': {'color': 'lavender', 'name': 'Lavender'}
+        },
+        'monochrome': {
+            'pure-white': {'color': 'medium-gray', 'name': 'Gray'},
+            'medium-gray': {'color': 'pure-black', 'name': 'Black'},
+            'pure-black': {'color': 'pure-white', 'name': 'White'},
+            'light-gray': {'color': 'dark-gray', 'name': 'Dark Gray'},
+            'dark-gray': {'color': 'charcoal', 'name': 'Charcoal'},
+            'charcoal': {'color': 'light-gray', 'name': 'Light Gray'}
+        },
+        'jewel': {
+            'ruby': {'color': 'emerald', 'name': 'Emerald'},
+            'emerald': {'color': 'sapphire', 'name': 'Sapphire'},
+            'sapphire': {'color': 'ruby', 'name': 'Ruby'},
+            'plum': {'color': 'dark-gold', 'name': 'Dark Gold'},
+            'dark-gold': {'color': 'deep-teal', 'name': 'Deep Teal'},
+            'deep-teal': {'color': 'plum', 'name': 'Plum'}
+        }
+    }
+    
+    #next color
+    next_color_info = next_colors.get(palette, {}).get(color, None)
+    next_color = None
+    next_url = None
+    
+    if next_color_info:
+        next_color = next_color_info['name']
+        next_url = url_for('color_detail') + f'?palette={palette}&color={next_color_info["color"]}&name={next_color}'
+    print("palette:", palette)
+    print("color:", color)
+    print("color_name:", color_name)
+    print("palette_title:", palette_title)
+    print("color_description:", color_description)
+    print("next_url:", next_url)
+
+    return render_template('color-detail.html', 
+                           palette_title=palette_title,
+                           color_name=color_name,
+                           color_class=color,
+                           color_description=color_description,
+                           back_url=back_url,
+                           next_color=next_color,
+                           next_url=next_url)
+                           
+
 # Helper function to get question by ID
 def get_question_by_id(question_id):
     for question in quiz_qs:
