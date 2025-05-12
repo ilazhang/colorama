@@ -9,6 +9,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .color-circle-large:hover, .color-circle-small:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
   
   .color-circle-large {
@@ -19,6 +26,14 @@
   .color-circle-small {
     width: 60px;
     height: 60px;
+  }
+  
+  .color-detail-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
+    border: 3px solid #333;
   }
   
   .color-label {
@@ -32,41 +47,435 @@
     z-index: 10;
   }
   
-  /* Earth tone colors */
+  /*Earth Tones*/
   .olive { background-color: #808000; }
   .tan { background-color: #D2B48C; }
   .brown { background-color: #8B4513; }
-  .dark-green { background-color: #006400; }
-  .rose { background-color: #FF8080; }
-  .terracotta { background-color: #E2725B; }
+  .dark-green { background-color: #125712; }
+  .rose { background-color: #f19e9e; }
+  .terracotta { background-color: #cc5e48; }
+  
+  /*Pastels*/
+  .pink { background-color: #FFD1DC; }
+  .baby-blue { background-color: #CFECFF; }
+  .light-yellow { background-color: #FFFACD; }
+  .lavender { background-color: #D8BFD8; }
+  .white { background-color: #f0f0f0; }
+  .light-green { background-color: #b7f0cf; }
+  
+  /*Monochrome*/
+  .pure-white { background-color: #FFFFFF; border: 1px solid #DDDDDD; }
+  .light-gray { background-color: #CCCCCC; }
+  .medium-gray { background-color: #888888; }
+  .dark-gray { background-color: #444444; }
+  .pure-black { background-color: #000000; }
+  .charcoal { background-color: #333333; }
+  
+  /*Jewel Tones */
+  .ruby { background-color: #851818; }
+  .emerald { background-color: #095a1d; }
+  .sapphire { background-color: #0c1c63; }
+  .plum { background-color: #542868; }
+  .dark-gold { background-color: #927106; }
+  .deep-teal { background-color: #0f4e50; }
+  
+  /* Lesson styles */
+  .lesson {
+    display: none;
+  }
+  
+  .lesson.active {
+    display: block;
+  }
+  
+  .lesson-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  
+  .lesson-dots {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+    gap: 0.5rem;
+  }
+  
+  .lesson-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+  }
+  
+  .lesson-dot.active {
+    background-color: #007bff;
+  }
+  
+  /* Color detail view */
+  .color-detail-view {
+    display: none;
+  }
+  
+  .color-detail-view.active {
+    display: block;
+  }
+  
+  .example-item {
+    width: 100%;
+    height: 120px;
+    margin-bottom: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+  }
+  
+  .detail-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
 </style>
+
 <div class="default-bg">
   <div class="p-4">
-    <div class="text-center mb-4">
-      <h2>Earth Tones</h2>
-      <p class="my-3">Earth tones are colors inspired by natural elements like soil, moss, and stone. They create a grounded and harmonious aesthetic.</p>
-    </div>
-
-    <div class="container mb-5">
-      <h4 class="text-center mb-3">Mains</h4>
-      <div class="d-flex justify-content-center gap-5 mb-5">
-        <div class="color-circle-large olive" data-color-name="Olive"></div>
-        <div class="color-circle-large tan" data-color-name="Tan"></div>
-        <div class="color-circle-large brown" data-color-name="Brown"></div>
+    <!-- Main Lessons View -->
+    <div id="lessons-container">
+      <div class="lesson-dots">
+        <div class="lesson-dot active" data-lesson="1"></div>
+        <div class="lesson-dot" data-lesson="2"></div>
+        <div class="lesson-dot" data-lesson="3"></div>
+        <div class="lesson-dot" data-lesson="4"></div>
       </div>
       
-      <h4 class="text-center mb-3">Accents</h4>
-      <div class="d-flex justify-content-center gap-4 mb-4">
-        <div class="color-circle-small dark-green" data-color-name="Dark Green"></div>
-        <div class="color-circle-small rose" data-color-name="Rose"></div>
-        <div class="color-circle-small terracotta" data-color-name="Terracotta"></div>
+      <!-- Lesson 1: Earth Tones -->
+      <div id="lesson-1" class="lesson active">
+        <div class="text-center mb-4">
+          <h2>Earth Tones</h2>
+          <p class="my-3">Earth tones are colors inspired by natural elements like soil, moss, and stone. They create a grounded and harmonious aesthetic.</p>
+        </div>
+
+        <div class="container mb-5">
+          <h4 class="text-center mb-3">Mains</h4>
+          <div class="d-flex justify-content-center gap-5 mb-5">
+            <div class="color-circle-large olive" data-color-name="Olive" data-palette="earth" data-color="olive"></div>
+            <div class="color-circle-large tan" data-color-name="Tan" data-palette="earth" data-color="tan"></div>
+            <div class="color-circle-large brown" data-color-name="Brown" data-palette="earth" data-color="brown"></div>
+          </div>
+          
+          <h4 class="text-center mb-3">Accents</h4>
+          <div class="d-flex justify-content-center gap-4 mb-4">
+            <div class="color-circle-small dark-green" data-color-name="Dark Green" data-palette="earth" data-color="dark-green"></div>
+            <div class="color-circle-small rose" data-color-name="Rose" data-palette="earth" data-color="rose"></div>
+            <div class="color-circle-small terracotta" data-color-name="Terracotta" data-palette="earth" data-color="terracotta"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!--Pastels-->
+      <div id="lesson-2" class="lesson">
+        <div class="text-center mb-4">
+          <h2>Pastel Colors</h2>
+          <p class="my-3">Pastel colors are soft, low-saturation versions of colors that create a gentle, soothing aesthetic. They're perfect for creating subtle, delicate looks.</p>
+        </div>
+
+        <div class="container mb-5">
+          <h4 class="text-center mb-3">Mains</h4>
+          <div class="d-flex justify-content-center gap-5 mb-5">
+            <div class="color-circle-large pink" data-color-name="Pink" data-palette="pastel" data-color="pink"></div>
+            <div class="color-circle-large baby-blue" data-color-name="Baby Blue" data-palette="pastel" data-color="baby-blue"></div>
+            <div class="color-circle-large light-yellow" data-color-name="Light Yellow" data-palette="pastel" data-color="light-yellow"></div>
+          </div>
+          
+          <h4 class="text-center mb-3">Accents</h4>
+          <div class="d-flex justify-content-center gap-4 mb-4">
+            <div class="color-circle-small lavender" data-color-name="Lavender" data-palette="pastel" data-color="lavender"></div>
+            <div class="color-circle-small white" data-color-name="White" data-palette="pastel" data-color="white"></div>
+            <div class="color-circle-small light-green" data-color-name="Light Green" data-palette="pastel" data-color="light-green"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!--Monochrome-->
+      <div id="lesson-3" class="lesson">
+        <div class="text-center mb-4">
+          <h2>Monochrome Colors</h2>
+          <p class="my-3">Monochrome color schemes consist of different shades and tints of a single color or just black, white, and gray. They create a clean, sophisticated look.</p>
+        </div>
+
+        <div class="container mb-5">
+          <h4 class="text-center mb-3">Mains</h4>
+          <div class="d-flex justify-content-center gap-5 mb-5">
+            <div class="color-circle-large pure-white" data-color-name="White" data-palette="monochrome" data-color="pure-white"></div>
+            <div class="color-circle-large medium-gray" data-color-name="Gray" data-palette="monochrome" data-color="medium-gray"></div>
+            <div class="color-circle-large pure-black" data-color-name="Black" data-palette="monochrome" data-color="pure-black"></div>
+          </div>
+          
+          <h4 class="text-center mb-3">Accents</h4>
+          <div class="d-flex justify-content-center gap-4 mb-4">
+            <div class="color-circle-small light-gray" data-color-name="Light Gray" data-palette="monochrome" data-color="light-gray"></div>
+            <div class="color-circle-small dark-gray" data-color-name="Dark Gray" data-palette="monochrome" data-color="dark-gray"></div>
+            <div class="color-circle-small charcoal" data-color-name="Charcoal" data-palette="monochrome" data-color="charcoal"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!--Jewel Tones-->
+      <div id="lesson-4" class="lesson">
+        <div class="text-center mb-4">
+          <h2>Jewel Tones</h2>
+          <p class="my-3">Jewel tones are rich, deep colors inspired by precious gems. They create a luxurious, sophisticated and bold aesthetic.</p>
+        </div>
+
+        <div class="container mb-5">
+          <h4 class="text-center mb-3">Mains</h4>
+          <div class="d-flex justify-content-center gap-5 mb-5">
+            <div class="color-circle-large ruby" data-color-name="Ruby" data-palette="jewel" data-color="ruby"></div>
+            <div class="color-circle-large emerald" data-color-name="Emerald" data-palette="jewel" data-color="emerald"></div>
+            <div class="color-circle-large sapphire" data-color-name="Sapphire" data-palette="jewel" data-color="sapphire"></div>
+          </div>
+          
+          <h4 class="text-center mb-3">Accents</h4>
+          <div class="d-flex justify-content-center gap-4 mb-4">
+            <div class="color-circle-small plum" data-color-name="Plum" data-palette="jewel" data-color="plum"></div>
+            <div class="color-circle-small dark-gold" data-color-name="Dark Gold" data-palette="jewel" data-color="dark-gold"></div>
+            <div class="color-circle-small deep-teal" data-color-name="Deep Teal" data-palette="jewel" data-color="deep-teal"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="lesson-navigation">
+        <button id="prev-lesson" class="btn btn-secondary">Previous</button>
+        <button id="next-lesson" class="btn btn-primary">Next</button>
+      </div>
+      
+      <div class="text-center mt-5">
+        <a href="{{ url_for('quiz') }}" class="btn btn-primary">Take the Quiz</a>
       </div>
     </div>
     
-    <div class="text-center mt-5">
-      <a href="{{ url_for('quiz') }}" class="btn btn-primary">Take the Quiz</a>
+    <!-- Color Detail Views -->
+    <div id="color-details-container" style="display: none;">
+      <!-- Earth Tones Color Details -->
+      <div id="detail-earth-olive" class="color-detail-view">
+        <div class="text-center mb-4">
+          <h2>Earth Tones - Olive</h2>
+        </div>
+        
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Outfits</h4>
+              <div class="example-item">Outfit Example 1</div>
+              <div class="example-item">Outfit Example 2</div>
+              <div class="example-item">Outfit Example 3</div>
+            </div>
+            
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+              <div class="color-detail-circle olive mb-3"></div>
+              <h4>Olive</h4>
+              <p class="text-center">A muted green with hints of brown, perfect for creating a natural look.</p>
+            </div>
+            
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Clothes</h4>
+              <div class="example-item">Clothing Example 1</div>
+              <div class="example-item">Clothing Example 2</div>
+              <div class="example-item">Clothing Example 3</div>
+            </div>
+          </div>
+          
+          <div class="detail-navigation">
+            <button class="btn btn-secondary back-to-palette">Back to Palette</button>
+            <button class="btn btn-primary next-color" data-next="detail-earth-tan">Next Color</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="detail-earth-tan" class="color-detail-view">
+        <div class="text-center mb-4">
+          <h2>Earth Tones - Tan</h2>
+        </div>
+        
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Outfits</h4>
+              <div class="example-item">Outfit Example 1</div>
+              <div class="example-item">Outfit Example 2</div>
+              <div class="example-item">Outfit Example 3</div>
+            </div>
+            
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+              <div class="color-detail-circle tan mb-3"></div>
+              <h4>Tan</h4>
+              <p class="text-center">A light brown shade that evokes sand and natural fibers, very versatile for basic pieces.</p>
+            </div>
+            
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Clothes</h4>
+              <div class="example-item">Clothing Example 1</div>
+              <div class="example-item">Clothing Example 2</div>
+              <div class="example-item">Clothing Example 3</div>
+            </div>
+          </div>
+          
+          <div class="detail-navigation">
+            <button class="btn btn-secondary back-to-palette">Back to Palette</button>
+            <button class="btn btn-primary next-color" data-next="detail-earth-brown">Next Color</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="detail-earth-brown" class="color-detail-view">
+        <div class="text-center mb-4">
+          <h2>Earth Tones - Brown</h2>
+        </div>
+        
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Outfits</h4>
+              <div class="example-item">Outfit Example 1</div>
+              <div class="example-item">Outfit Example 2</div>
+              <div class="example-item">Outfit Example 3</div>
+            </div>
+            
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+              <div class="color-detail-circle brown mb-3"></div>
+              <h4>Brown</h4>
+              <p class="text-center">A rich, deep brown reminiscent of wood and leather, creates a strong foundation for outfits.</p>
+            </div>
+            
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Clothes</h4>
+              <div class="example-item">Clothing Example 1</div>
+              <div class="example-item">Clothing Example 2</div>
+              <div class="example-item">Clothing Example 3</div>
+            </div>
+          </div>
+          
+          <div class="detail-navigation">
+            <button class="btn btn-secondary back-to-palette">Back to Palette</button>
+            <button class="btn btn-primary next-color" data-next="detail-earth-olive">Next Color</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Pastel Colors Details -->
+      <div id="detail-pastel-pink" class="color-detail-view">
+        <div class="text-center mb-4">
+          <h2>Pastel Colors - Pink</h2>
+        </div>
+        
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Outfits</h4>
+              <div class="example-item">Outfit Example 1</div>
+              <div class="example-item">Outfit Example 2</div>
+              <div class="example-item">Outfit Example 3</div>
+            </div>
+            
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+              <div class="color-detail-circle pink mb-3"></div>
+              <h4>Pink</h4>
+              <p class="text-center">A soft, delicate pink that adds a gentle touch of color to any outfit.</p>
+            </div>
+            
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Clothes</h4>
+              <div class="example-item">Clothing Example 1</div>
+              <div class="example-item">Clothing Example 2</div>
+              <div class="example-item">Clothing Example 3</div>
+            </div>
+          </div>
+          
+          <div class="detail-navigation">
+            <button class="btn btn-secondary back-to-palette">Back to Palette</button>
+            <button class="btn btn-primary next-color" data-next="detail-pastel-baby-blue">Next Color</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="detail-pastel-baby-blue" class="color-detail-view">
+        <div class="text-center mb-4">
+          <h2>Pastel Colors - Baby Blue</h2>
+        </div>
+        
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Outfits</h4>
+              <div class="example-item">Outfit Example 1</div>
+              <div class="example-item">Outfit Example 2</div>
+              <div class="example-item">Outfit Example 3</div>
+            </div>
+            
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+              <div class="color-detail-circle baby-blue mb-3"></div>
+              <h4>Baby Blue</h4>
+              <p class="text-center">A light, airy blue that evokes calm and serenity, perfect for spring and summer.</p>
+            </div>
+            
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Clothes</h4>
+              <div class="example-item">Clothing Example 1</div>
+              <div class="example-item">Clothing Example 2</div>
+              <div class="example-item">Clothing Example 3</div>
+            </div>
+          </div>
+          
+          <div class="detail-navigation">
+            <button class="btn btn-secondary back-to-palette">Back to Palette</button>
+            <button class="btn btn-primary next-color" data-next="detail-pastel-light-yellow">Next Color</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="detail-pastel-light-yellow" class="color-detail-view">
+        <div class="text-center mb-4">
+          <h2>Pastel Colors - Light Yellow</h2>
+        </div>
+        
+        <div class="container">
+          <div class="row mb-5">
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Outfits</h4>
+              <div class="example-item">Outfit Example 1</div>
+              <div class="example-item">Outfit Example 2</div>
+              <div class="example-item">Outfit Example 3</div>
+            </div>
+            
+            <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+              <div class="color-detail-circle light-yellow mb-3"></div>
+              <h4>Light Yellow</h4>
+              <p class="text-center">A soft, buttery yellow that brings warmth and cheerfulness to your wardrobe.</p>
+            </div>
+            
+            <div class="col-md-4">
+              <h4 class="text-center mb-3">Example Clothes</h4>
+              <div class="example-item">Clothing Example 1</div>
+              <div class="example-item">Clothing Example 2</div>
+              <div class="example-item">Clothing Example 3</div>
+            </div>
+          </div>
+          
+          <div class="detail-navigation">
+            <button class="btn btn-secondary back-to-palette">Back to Palette</button>
+            <button class="btn btn-primary next-color" data-next="detail-pastel-pink">Next Color</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Add more detail views for other colors... -->
     </div>
   </div>
 </div>
 
+<script src="/static/lesson.js"></script>
 {% endblock %}
