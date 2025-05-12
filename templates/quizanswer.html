@@ -12,7 +12,7 @@
       {% if correct %}
         <div class="alert alert-success">
           <h4>Correct! 🎉</h4>
-          <p>You've correctly identified all the main colors and complementary colors.</p>
+          <p><strong>Answer:</strong> {{ description }}</p>
         </div>
       {% else %}
         <div class="alert alert-danger">
@@ -21,78 +21,73 @@
         </div>
       {% endif %}
       
-      <div class="card mb-3">
-        <div class="card-header {% if mains_correct %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
-          Main Colors
-        </div>
-        <div class="card-body">
-          <p>Your selection:</p>
-          <div class="d-flex flex-wrap gap-2 mb-3">
-            {% for item_id in user_mains %}
-              {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
-              {% endfor %}
-            {% else %}
-              <span class="fst-italic">None selected</span>
-            {% endfor %}
-          </div>
-          <p>Expected:</p>
-          <div class="d-flex flex-wrap gap-2">
+      <div class="text-center mb-4 p-3 border-bottom">
+        <h4 class="{% if mains_correct %}text-success{% else %}text-danger{% endif %} mb-3">Main Colors</h4>
+        {% if mains_correct %}
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
             {% for item_id in expected_mains %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
+                <div class="color-circle-large {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
               {% endfor %}
             {% endfor %}
           </div>
-          {% if mains_correct %}
-            <p class="text-success">✓ Correct!</p>
-          {% else %}
-            <p class="text-danger">✗ Incorrect</p>
-          {% endif %}
-        </div>
-      </div>
-      
-      <div class="card">
-        <div class="card-header {% if complements_correct %}bg-success text-white{% else %}bg-danger text-white{% endif %}">
-          Complementary Colors
-        </div>
-        <div class="card-body">
+          <p class="text-success mt-2">✓ Correct!</p>
+        {% else %}
           <p>Your selection:</p>
-          <div class="d-flex flex-wrap gap-2 mb-3">
-            {% for item_id in user_complements %}
+          <div class="d-flex flex-wrap gap-3 mb-3 justify-content-center">
+            {% for item_id in user_mains %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
+                <div class="color-circle-large {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
               {% endfor %}
             {% else %}
               <span class="fst-italic">None selected</span>
             {% endfor %}
           </div>
           <p>Expected:</p>
-          <div class="d-flex flex-wrap gap-2">
-            {% for item_id in expected_complements %}
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            {% for item_id in expected_mains %}
               {% for item in clothing_items.values() if item.id == item_id %}
-                <div class="color-circle-small {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
+                <div class="color-circle-large {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
               {% endfor %}
             {% endfor %}
           </div>
-          {% if complements_correct %}
-            <p class="text-success">✓ Correct!</p>
-          {% else %}
-            <p class="text-danger">✗ Incorrect</p>
-          {% endif %}
-        </div>
+          <p class="text-danger mt-2">✗ Incorrect</p>
+        {% endif %}
       </div>
       
-      {% if description %}
-      <div class="card mt-3">
-        <div class="card-header bg-info text-white">
-          Color Palette
-        </div>
-        <div class="card-body">
-          <p>{{ description }}</p>
-        </div>
+      <div class="text-center mb-4 p-3 border-bottom">
+        <h4 class="{% if complements_correct %}text-success{% else %}text-danger{% endif %} mb-3">Complementary Colors</h4>
+        {% if complements_correct %}
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            {% for item_id in expected_complements %}
+              {% for item in clothing_items.values() if item.id == item_id %}
+                <div class="color-circle-large {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+          <p class="text-success mt-2">✓ Correct!</p>
+        {% else %}
+          <p>Your selection:</p>
+          <div class="d-flex flex-wrap gap-3 mb-3 justify-content-center">
+            {% for item_id in user_complements %}
+              {% for item in clothing_items.values() if item.id == item_id %}
+                <div class="color-circle-large {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
+              {% endfor %}
+            {% else %}
+              <span class="fst-italic">None selected</span>
+            {% endfor %}
+          </div>
+          <p>Expected:</p>
+          <div class="d-flex flex-wrap gap-3 justify-content-center">
+            {% for item_id in expected_complements %}
+              {% for item in clothing_items.values() if item.id == item_id %}
+                <div class="color-circle-large {{ item.color }}" title="{{ item.name }}" data-color-name="{{ item.color|capitalize }}"></div>
+              {% endfor %}
+            {% endfor %}
+          </div>
+          <p class="text-danger mt-2">✗ Incorrect</p>
+        {% endif %}
       </div>
-      {% endif %}
       
       <div class="mt-4">
         {% if is_last %}
