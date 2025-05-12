@@ -21,11 +21,13 @@
   .color-circle-large {
     width: 100px;
     height: 100px;
+    margin-bottom: 30px; /* Add space below for the label */
   }
   
   .color-circle-small {
     width: 60px;
     height: 60px;
+    margin-bottom: 25px; /* Add space below for the label */
   }
   
   .color-detail-circle {
@@ -45,6 +47,26 @@
     font-size: 12px;
     white-space: nowrap;
     z-index: 10;
+  }
+  
+  /* Add styles for color names below circles */
+  .color-circle-large:after, .color-circle-small:after {
+    content: attr(data-color-name);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -25px;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap; /* Prevent wrapping */
+  }
+  
+  .color-circle-large:after {
+    font-size: 14px;
+  }
+  
+  .color-circle-small:after {
+    font-size: 12px;
   }
   
   /*Earth Tones*/
