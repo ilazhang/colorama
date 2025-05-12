@@ -294,7 +294,9 @@ def parse():
         is_last=is_last,
         final_score=final_score,
         description=question.get('description', ''),
-        clothing_items=clothing_items
+        clothing_items=clothing_items,
+        current_score=session.get('correct_answers', 0),
+        total_questions=session.get('total_questions', len(quiz_qs))
     )
 
 
