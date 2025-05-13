@@ -282,6 +282,66 @@ def color_detail():
     print("color_description:", color_description)
     print("next_url:", next_url)
 
+    # Get example images based on palette and color
+    images = []
+    
+    # Earth tones
+    if palette == "earth":
+        if color == "olive":
+            images = [
+                "/static/lesson1/olive/olive-brown-outfit-01.jpg",
+                "/static/lesson1/olive/olive-brown-outfit-02.jpg",
+                "/static/lesson1/olive/olive-red-outfit-01.jpg",
+                "/static/lesson1/olive/olive-pants-01.jpg",
+                "/static/lesson1/olive/olive-pocket-tee-01.jpg",
+                "/static/lesson1/olive/olive-shirt-01.jpg"
+            ]
+        elif color == "tan":
+            images = [
+                "/static/lesson1/tan/tan-bike-outfit-01.jpg",
+                "/static/lesson1/tan/tan-cardigan-outfit-01.jpg",
+                "/static/lesson1/tan/tan-on-tan-outfit-01.jpg",
+                "/static/lesson1/tan/tan-cap-01.jpg",
+                "/static/lesson1/tan/tan-sweater-01.jpg",
+                "/static/lesson1/tan/tan-work-pants-01.jpg"
+            ]
+        elif color == "brown":
+            images = [
+                "/static/lesson1/brown/brown-formal-outfit-01.jpg",
+                "/static/lesson1/brown/brown-outfit-01.jpg",
+                "/static/lesson1/brown/brown-suit-01.jpg",
+                "/static/lesson1/brown/brown-belt-01.jpg",
+                "/static/lesson1/brown/brown-pants-01.jpg",
+                "/static/lesson1/brown/brown-shoes-01.jpg"
+            ]
+        elif color == "dark-green":
+            images = [
+                "/static/lesson1/green/green-army-outfit-01.jpg",
+                "/static/lesson1/green/green-workwear-outfit-01.jpg",
+                "/static/lesson1/green/green-baggy-outfit-01.jpg",
+                "/static/lesson1/green/green-corduroy-pants-01.jpg",
+                "/static/lesson1/green/green-work-jacket-01.jpg",
+                "/static/lesson1/green/green-zoomer-fit-01.jpg"
+            ]
+        elif color == "rose":
+            images = [
+                "/static/lesson1/rose/rose-accessories-outfit-01.jpg",
+                "/static/lesson1/rose/rose-pants-outfit-01.jpg",
+                "/static/lesson1/rose/rose-shirt-outfit-01.jpg",
+                "/static/lesson1/rose/rose-beanies-01.jpg",
+                "/static/lesson1/rose/rose-glasses-01.jpg",
+                "/static/lesson1/rose/rose-jeans-01.jpg"
+            ]
+        elif color == "terracotta":
+            images = [
+                "/static/lesson1/terracotta/terracotta-jacket-outfit-01.jpg",
+                "/static/lesson1/terracotta/terracotta-pants-outfit-01.jpg",
+                "/static/lesson1/terracotta/terracotta-shirt-fit-01.jpg",
+                "/static/lesson1/terracotta/terracotta-hat-01.jpg",
+                "/static/lesson1/terracotta/terracotta-hoodie-01.jpg",
+                "/static/lesson1/terracotta/terracotta-socks-01.jpg"
+            ]
+    
     return render_template(
         "color-detail.html",
         palette_title=palette_title,
@@ -291,6 +351,7 @@ def color_detail():
         back_url=back_url,
         next_color=next_color,
         next_url=next_url,
+        images=images
     )
 
 
