@@ -21,6 +21,10 @@
     background-color: blue;
 }
 
+.denim {
+    background-color: #3B5998;
+}
+
 .black {
     background-color: black;
 }
@@ -56,7 +60,7 @@
 
 .maroon {
     background-color: #800000;
-    color: white;
+    color: black;
 }
 
 .colorama-container {
