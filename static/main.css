@@ -25,8 +25,20 @@
     background-color: #3B5998;
 }
 
+.pastel-blue {
+    background-color: #D6EBF2
+}
+
 .black {
     background-color: black;
+}
+
+.ruby {
+    background-color: #851818;
+}
+
+.emerald { 
+  background-color: #095a1d; 
 }
 
 .yellow {
@@ -54,6 +66,11 @@
 }
 
 .light-pink {
+    background-color: #FFB6C1;
+    color: black;
+}
+
+.pink {
     background-color: #FFB6C1;
     color: black;
 }

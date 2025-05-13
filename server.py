@@ -87,21 +87,52 @@ clothing_items = {
         "color": "black",
         "name": "Black Shorts",
     },
-    15: {"id": 15, "image": "/static/brownbootsquiz.jpg", "color": "brown", "name": "Brown Boots"},
-    16: {"id": 16, "image": "/static/rubycardiganquiz.jpg", "color": "ruby", "name": "Ruby Cardigan"},
-    17: {"id": 17, "image": "/static/whitebuttonupquiz.jpg", "color": "white", "name": "White Button Up"},
-    18: {"id": 18, "image": "/static/emeraldsweaterquiz.jpg", "color": "emerald", "name": "Emerald Sweater"},
-    19: {"id": 18, "image": "/static/pinkshirtquiz.jpg", "color": "pink", "name": "Pink Button Up"},
+    15: {
+        "id": 15,
+        "image": "/static/brownbootsquiz.jpg",
+        "color": "brown",
+        "name": "Brown Boots",
+    },
+    16: {
+        "id": 16,
+        "image": "/static/rubycardiganquiz.jpg",
+        "color": "ruby",
+        "name": "Ruby Cardigan",
+    },
+    17: {
+        "id": 17,
+        "image": "/static/whitebuttonupquiz.jpg",
+        "color": "white",
+        "name": "White Button Up",
+    },
+    18: {
+        "id": 18,
+        "image": "/static/emeraldsweaterquiz.jpg",
+        "color": "emerald",
+        "name": "Emerald Sweater",
+    },
+    19: {
+        "id": 19,
+        "image": "/static/pinkshirtquiz.jpg",
+        "color": "pink",
+        "name": "Pink Button Up",
+    },
     20: {
         "id": 20,
         "image": "/static/whiteteequiz.jpg",
         "color": "white",
         "name": "White Tee",
     },
+    23: {
+        "id": 23,
+        "image": "/static/whiteshoesquiz.jpg",
+        "color": "white",
+        "name": "White Shoes",
+    },
     21: {
         "id": 21,
         "image": "/static/pastelbluebuttonupquiz.jpg",
-        "color": "pastel blue",
+        "color": "pastel-blue",
         "name": "Pastel Blue Button Up",
     },
     22: {
@@ -135,22 +166,22 @@ quiz_qs = [
         "mains": 2,
         "complements": 1,
         "expected_mains": {18, 16},  # emerald sweater, ruby cardigan
-        "expected_complements": {15},  #brown boots
+        "expected_complements": {15},  # brown boots
         "description": "Jewel tones",
-        "available_items": [6, 10, 11, 15, 16, 18]
+        "available_items": [6, 10, 11, 15, 16, 18],
     },
     {
         "id": 3,
         "mains": 2,
         "complements": 1,
         "expected_mains": {21, 22},  # pastel blue button up, pink shorts
-        "expected_complements": {20},  # white tee
+        "expected_complements": {23},  # white shoes
         "description": "Pastels",
         "available_items": [
             2,
             22,
             15,
-            20,
+            23,
             21,
         ],
     },
@@ -163,10 +194,10 @@ quiz_qs = [
         "description": "Monochrome",
         "available_items": [
             2,
+            5,
             6,
             12,
             8,
-            5,
         ],  # Limited selection of items for this question
     },
 ]
@@ -284,7 +315,7 @@ def color_detail():
 
     # Get example images based on palette and color
     images = []
-    
+
     # Earth tones
     if palette == "earth":
         if color == "olive":
@@ -294,7 +325,7 @@ def color_detail():
                 "/static/lesson1/olive/olive-red-outfit-01.jpg",
                 "/static/lesson1/olive/olive-pants-01.jpg",
                 "/static/lesson1/olive/olive-pocket-tee-01.jpg",
-                "/static/lesson1/olive/olive-shirt-01.jpg"
+                "/static/lesson1/olive/olive-shirt-01.jpg",
             ]
         elif color == "tan":
             images = [
@@ -303,7 +334,7 @@ def color_detail():
                 "/static/lesson1/tan/tan-on-tan-outfit-01.jpg",
                 "/static/lesson1/tan/tan-cap-01.jpg",
                 "/static/lesson1/tan/tan-sweater-01.jpg",
-                "/static/lesson1/tan/tan-work-pants-01.jpg"
+                "/static/lesson1/tan/tan-work-pants-01.jpg",
             ]
         elif color == "brown":
             images = [
@@ -312,7 +343,7 @@ def color_detail():
                 "/static/lesson1/brown/brown-suit-01.jpg",
                 "/static/lesson1/brown/brown-belt-01.jpg",
                 "/static/lesson1/brown/brown-pants-01.jpg",
-                "/static/lesson1/brown/brown-shoes-01.jpg"
+                "/static/lesson1/brown/brown-shoes-01.jpg",
             ]
         elif color == "dark-green":
             images = [
@@ -321,7 +352,7 @@ def color_detail():
                 "/static/lesson1/green/green-baggy-outfit-01.jpg",
                 "/static/lesson1/green/green-corduroy-pants-01.jpg",
                 "/static/lesson1/green/green-work-jacket-01.jpg",
-                "/static/lesson1/green/green-zoomer-fit-01.jpg"
+                "/static/lesson1/green/green-zoomer-fit-01.jpg",
             ]
         elif color == "rose":
             images = [
@@ -330,7 +361,7 @@ def color_detail():
                 "/static/lesson1/rose/rose-shirt-outfit-01.jpg",
                 "/static/lesson1/rose/rose-beanies-01.jpg",
                 "/static/lesson1/rose/rose-glasses-01.jpg",
-                "/static/lesson1/rose/rose-jeans-01.jpg"
+                "/static/lesson1/rose/rose-jeans-01.jpg",
             ]
         elif color == "terracotta":
             images = [
@@ -339,9 +370,9 @@ def color_detail():
                 "/static/lesson1/terracotta/terracotta-shirt-fit-01.jpg",
                 "/static/lesson1/terracotta/terracotta-hat-01.jpg",
                 "/static/lesson1/terracotta/terracotta-hoodie-01.jpg",
-                "/static/lesson1/terracotta/terracotta-socks-01.jpg"
+                "/static/lesson1/terracotta/terracotta-socks-01.jpg",
             ]
-    
+
     return render_template(
         "color-detail.html",
         palette_title=palette_title,
@@ -351,7 +382,7 @@ def color_detail():
         back_url=back_url,
         next_color=next_color,
         next_url=next_url,
-        images=images
+        images=images,
     )
 
 
