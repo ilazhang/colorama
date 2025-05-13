@@ -77,16 +77,16 @@
 }
 
 .colorama-title {
-    font-size: 8rem;
+    font-size: 6rem;
     font-weight: bold;
     margin-bottom: .5rem;
     color: black;
 }
 
 .colorama-subtitle {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
-    color: #18365e;
+    color: black;
     text-transform: uppercase;
 }
 
