@@ -209,8 +209,8 @@ quiz_qs = [
             6,  # Yellow Shirt
             12, # Light Pink Pants
             8,  # Brown Pants
-            14, # Black Shorts
-            20, # White Tee
+            4,  # Blue Jorts
+            1,  # Blue Shirt
         ],  # Limited selection of items for this question
     },
 ]
