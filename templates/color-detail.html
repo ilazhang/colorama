@@ -43,16 +43,17 @@
     border: 3px solid #333;
   }
   
-  .example-item {
+  .img-fluid {
     width: 100%;
-    height: 120px;
-    margin-bottom: 10px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .img-fluid:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
   
   .detail-navigation {
@@ -64,31 +65,27 @@
 
 <div class="default-bg">
   <div class="p-4">
-    <div class="text-center mb-4">
+    <div class="text-center mb-4 pt-4">
       <h2>{{ palette_title }} - {{ color_name }}</h2>
     </div>
     
     <div class="container">
-      <div class="row mb-5">
-        <div class="col-md-4">
-          <h4 class="text-center mb-3">Example Outfits</h4>
-          <div class="example-item">Outfit Example 1</div>
-          <div class="example-item">Outfit Example 2</div>
-          <div class="example-item">Outfit Example 3</div>
-        </div>
-        
-        <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
+      <!-- Color display section -->
+      <div class="row mb-4">
+        <div class="col-md-4 offset-md-4 d-flex flex-column align-items-center justify-content-center">
           <div class="color-detail-circle {{ color_class }} mb-3"></div>
           <h4>{{ color_name }}</h4>
           <p class="text-center">{{ color_description }}</p>
         </div>
-        
-        <div class="col-md-4">
-          <h4 class="text-center mb-3">Example Clothes</h4>
-          <div class="example-item">Clothing Example 1</div>
-          <div class="example-item">Clothing Example 2</div>
-          <div class="example-item">Clothing Example 3</div>
+      </div>
+      
+      <!-- Example images section -->
+      <div class="row mb-5">
+        {% for image in images %}
+        <div class="col-md-4 mb-3">
+          <img src="{{ image }}" class="img-fluid" alt="Color example">
         </div>
+        {% endfor %}
       </div>
       
       <div class="detail-navigation">
