@@ -291,8 +291,7 @@ def color_detail():
             "light-green": {"color": "lavender", "name": "Lavender"},
         },
         "monochrome": {
-            "pure-white": {"color": "medium-gray", "name": "Gray"},
-            "medium-gray": {"color": "pure-black", "name": "Black"},
+            "pure-white": {"color": "pure-black", "name": "Black"},
             "pure-black": {"color": "pure-white", "name": "White"},
             "light-gray": {"color": "dark-gray", "name": "Dark Gray"},
             "dark-gray": {"color": "charcoal", "name": "Charcoal"},
@@ -384,6 +383,150 @@ def color_detail():
                 "/static/lesson1/terracotta/terracotta-hat-01.jpg",
                 "/static/lesson1/terracotta/terracotta-hoodie-01.jpg",
                 "/static/lesson1/terracotta/terracotta-socks-01.jpg",
+            ]
+    
+    # Pastel colors
+    elif palette == "pastel":
+        if color == "pink":
+            images = [
+                "/static/lesson2/pinkshirt.jpg",
+                "/static/lesson2/pinkcardigan.jpg",
+                "/static/lesson2/pinkpantsblueshirt.jpg",
+                "/static/lesson2/pinkpantswhitetank.jpg",
+                "/static/lesson2/pinkshortswhiteshirt.jpg",
+                "/static/lesson2/pinkwhiteshirtwhitepants.jpg",
+            ]
+        elif color == "baby-blue":
+            images = [
+                "/static/lesson2/pastelbluejeanswhiteshirt.jpg",
+                "/static/lesson2/pastelbluepantswhitesweater.jpg",
+                "/static/lesson2/pastelblueshirttanpants.jpg",
+                "/static/lesson2/pastelblueshirtwhitepants.jpg",
+                "/static/lesson2/pastelblueshirtwhitepantsyellowscarf.jpg",
+                "/static/lesson2/pastelbluewhiteshirt.jpg",
+            ]
+        elif color == "light-yellow":
+            images = [
+                "/static/lesson2/pastelyellowcardiganwhiteshirttanpants.jpg",
+                "/static/lesson2/pastelyellowjacket.jpg",
+                "/static/lesson2/pastelyellowpants.jpg",
+                "/static/lesson2/pastelyellowshirtbluejeans2.jpg",
+                "/static/lesson2/pastelyellowshirtwhitepants.jpg",
+                "/static/lesson2/pastelyellowshirtwhitepants2.jpg",
+            ]
+        elif color == "tan":
+            images = [
+                "/static/lesson1/tan/tan-bike-outfit-01.jpg",
+                "/static/lesson1/tan/tan-cardigan-outfit-01.jpg",
+                "/static/lesson1/tan/tan-on-tan-outfit-01.jpg",
+                "/static/lesson1/tan/tan-cap-01.jpg",
+                "/static/lesson1/tan/tan-sweater-01.jpg",
+                "/static/lesson1/tan/tan-work-pants-01.jpg",
+            ]
+        elif color == "white":
+            images = [
+                "/static/lesson3/whitecardiganwhitepants.jpg",
+                "/static/lesson3/whitejacket.jpg",
+                "/static/lesson3/whitejacketwhitepants.jpg",
+                "/static/lesson3/whitepants.jpg",
+                "/static/lesson3/whiteshirtwhitepants.jpg",
+                "/static/lesson3/whiteshoes.jpg",
+            ]
+        elif color == "brown":
+            images = [
+                "/static/lesson1/brown/brown-formal-outfit-01.jpg",
+                "/static/lesson1/brown/brown-outfit-01.jpg",
+                "/static/lesson1/brown/brown-suit-01.jpg",
+                "/static/lesson1/brown/brown-belt-01.jpg",
+                "/static/lesson1/brown/brown-pants-01.jpg",
+                "/static/lesson1/brown/brown-shoes-01.jpg",
+            ]
+    
+    # Monochrome colors
+    elif palette == "monochrome":
+        if color == "pure-white":
+            images = [
+                "/static/lesson3/whitecardiganwhitepants.jpg",
+                "/static/lesson3/whitejacket.jpg",
+                "/static/lesson3/whitejacketwhitepants.jpg",
+                "/static/lesson3/whitepants.jpg",
+                "/static/lesson3/whiteshirtwhitepants.jpg",
+                "/static/lesson3/whiteshoes.jpg",
+            ]
+        elif color == "pure-black":
+            images = [
+                "/static/lesson3/blackbuttonupblackjeans.jpg",
+                "/static/lesson3/blackcardigangrayjeans.jpg",
+                "/static/lesson3/blackcowboyboots.jpg",
+                "/static/lesson3/blackjacketwhiteshirt.jpg",
+                "/static/lesson3/blackleatherjacket.jpg",
+                "/static/lesson3/blacksweaterblackpants.jpg",
+            ]
+        elif color == "medium-gray":
+            images = [
+                "/static/lesson3/graycrewneckwhitepants.jpg",
+                "/static/lesson3/grayjacket.jpg",
+                "/static/lesson3/grayjacketblackbag.jpg",
+                "/static/lesson3/graysuitwhiteshirt.jpg",
+                "/static/lesson3/graysweaterdarkgraypants.jpg",
+                "/static/lesson3/graysweaterwhitepants.jpg",
+            ]
+    
+    # Jewel tones
+    elif palette == "jewel":
+        if color == "ruby":
+            images = [
+                "/static/lesson4/rubyjacket.jpg",
+                "/static/lesson4/rubyjacketblackpants.jpg",
+                "/static/lesson4/rubyleatherjacketdarkgraypants.jpg",
+                "/static/lesson4/rubypantsrubyjacket.jpg",
+                "/static/lesson4/rubysweaterwhitepants.jpg",
+                "/static/lesson4/rubyturtlenecktanpants.jpg",
+            ]
+        elif color == "emerald":
+            images = [
+                "/static/lesson4/emeraldbuttonup.jpg",
+                "/static/lesson4/emeraldcardiganwhitepants.jpg",
+                "/static/lesson4/emeraldpants.jpg",
+                "/static/lesson4/emeraldsuit2.jpg",
+                "/static/lesson4/emeraldsweater.jpg",
+                "/static/lesson4/emeraldsweaterbrownpants.jpg",
+            ]
+        elif color == "sapphire":
+            images = [
+                "/static/lesson4/sapphirebuttonupbrownpants.jpg",
+                "/static/lesson4/sapphirecardiganbrownpants.jpg",
+                "/static/lesson4/sapphirejeans.jpg",
+                "/static/lesson4/sapphiresuit.jpg",
+                "/static/lesson4/sapphiresweaterwhitepants.jpg",
+                "/static/lesson4/sapphireturtleneck.jpg",
+            ]
+        elif color == "white":
+            images = [
+                "/static/lesson3/whitecardiganwhitepants.jpg",
+                "/static/lesson3/whitejacket.jpg",
+                "/static/lesson3/whitejacketwhitepants.jpg",
+                "/static/lesson3/whitepants.jpg",
+                "/static/lesson3/whiteshirtwhitepants.jpg",
+                "/static/lesson3/whiteshoes.jpg",
+            ]
+        elif color == "tan":
+            images = [
+                "/static/lesson1/tan/tan-bike-outfit-01.jpg",
+                "/static/lesson1/tan/tan-cardigan-outfit-01.jpg",
+                "/static/lesson1/tan/tan-on-tan-outfit-01.jpg",
+                "/static/lesson1/tan/tan-cap-01.jpg",
+                "/static/lesson1/tan/tan-sweater-01.jpg",
+                "/static/lesson1/tan/tan-work-pants-01.jpg",
+            ]
+        elif color == "brown":
+            images = [
+                "/static/lesson1/brown/brown-formal-outfit-01.jpg",
+                "/static/lesson1/brown/brown-outfit-01.jpg",
+                "/static/lesson1/brown/brown-suit-01.jpg",
+                "/static/lesson1/brown/brown-belt-01.jpg",
+                "/static/lesson1/brown/brown-pants-01.jpg",
+                "/static/lesson1/brown/brown-shoes-01.jpg",
             ]
 
     return render_template(
