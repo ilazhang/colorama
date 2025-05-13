@@ -32,7 +32,7 @@ quiz_qs = [
         "complements": 1,
         "expected_mains": {8, 3},  # Brown Pants, Tan Jacket
         "expected_complements": {7},  # Terracotta Hoodie
-        "description": "Earth tones palette",
+        "description": "Earth tones",
         "available_items": [3, 7, 8, 9, 10, 13]  # Limited selection of items for this question
     },
     {
@@ -41,7 +41,7 @@ quiz_qs = [
         "complements": 1,
         "expected_mains": {1, 5},  # Blue Shirt, White Pants
         "expected_complements": {6},  # Yellow Shirt
-        "description": "Cool blues palette",
+        "description": "Cool blues with a pop of color",
         "available_items": [1, 4, 5, 6, 11, 14]  # Limited selection of items for this question
     },
     {
@@ -235,6 +235,7 @@ def quiz(question_id=None):
     return render_template(
         "quiz.html", 
         question=question_with_items,
+        description=question_with_items['description'],
         current=session.get('current_question', 1),
         total=session.get('total_questions', len(quiz_qs))
     )
