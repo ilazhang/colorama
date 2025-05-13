@@ -89,9 +89,27 @@ clothing_items = {
     },
     15: {"id": 15, "image": "/static/brownbootsquiz.jpg", "color": "brown", "name": "Brown Boots"},
     16: {"id": 16, "image": "/static/rubycardiganquiz.jpg", "color": "ruby", "name": "Ruby Cardigan"},
-    17: {"id": 17, "image": "/static/whitebuttonup.jpg", "color": "white", "name": "White Button Up"},
+    17: {"id": 17, "image": "/static/whitebuttonupquiz.jpg", "color": "white", "name": "White Button Up"},
     18: {"id": 18, "image": "/static/emeraldsweaterquiz.jpg", "color": "emerald", "name": "Emerald Sweater"},
     19: {"id": 18, "image": "/static/pinkshirtquiz.jpg", "color": "pink", "name": "Pink Button Up"},
+    20: {
+        "id": 20,
+        "image": "/static/whiteteequiz.jpg",
+        "color": "white",
+        "name": "White Tee",
+    },
+    21: {
+        "id": 21,
+        "image": "/static/pastelbluebuttonupquiz.jpg",
+        "color": "pastel blue",
+        "name": "Pastel Blue Button Up",
+    },
+    22: {
+        "id": 22,
+        "image": "/static/pinkshortsquiz.jpg",
+        "color": "pink",
+        "name": "Pink Shorts",
+    },
 }
 
 # Quiz database with multiple questions
@@ -125,46 +143,30 @@ quiz_qs = [
         "id": 3,
         "mains": 2,
         "complements": 1,
-        "expected_mains": {2, 5},  # Black Leather Jacket, White Pants
-        "expected_complements": {1},  # Blue Shirt
-        "description": "Monochrome with accent",
+        "expected_mains": {21, 22},  # pastel blue button up, pink shorts
+        "expected_complements": {20},  # white tee
+        "description": "Pastels",
         "available_items": [
-            1,
             2,
-            5,
-            10,
-            14,
-        ],  # Limited selection of items for this question
+            22,
+            15,
+            20,
+            21,
+        ],
     },
     {
         "id": 4,
         "mains": 2,
-        "complements": 1,
-        "expected_mains": {9, 10},  # Cream Shirt, Grey Sweatpants
-        "expected_complements": {13},  # Maroon Scarf
-        "description": "Neutral base with pop of color",
+        "complements": 0,
+        "expected_mains": {2, 5},  # black leather jacket, white pants
+        "expected_complements": {},  # none
+        "description": "Monochrome",
         "available_items": [
             2,
-            9,
-            10,
-            12,
-            13,
-        ],  # Limited selection of items for this question
-    },
-    {
-        "id": 5,
-        "mains": 2,
-        "complements": 1,
-        "expected_mains": {11, 14},  # Light Green Sweatpants, Black Shorts
-        "expected_complements": {12},  # Light Pink Pants
-        "description": "Sporty casual with pastel accent",
-        "available_items": [
             6,
-            11,
             12,
-            14,
-            4,
-            10,
+            8,
+            5,
         ],  # Limited selection of items for this question
     },
 ]
