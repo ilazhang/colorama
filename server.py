@@ -87,6 +87,11 @@ clothing_items = {
         "color": "black",
         "name": "Black Shorts",
     },
+    15: {"id": 15, "image": "/static/brownbootsquiz.jpg", "color": "brown", "name": "Brown Boots"},
+    16: {"id": 16, "image": "/static/rubycardiganquiz.jpg", "color": "ruby", "name": "Ruby Cardigan"},
+    17: {"id": 17, "image": "/static/whitebuttonup.jpg", "color": "white", "name": "White Button Up"},
+    18: {"id": 18, "image": "/static/emeraldsweaterquiz.jpg", "color": "emerald", "name": "Emerald Sweater"},
+    19: {"id": 18, "image": "/static/pinkshirtquiz.jpg", "color": "pink", "name": "Pink Button Up"},
 }
 
 # Quiz database with multiple questions
@@ -111,17 +116,10 @@ quiz_qs = [
         "id": 2,
         "mains": 2,
         "complements": 1,
-        "expected_mains": {1, 5},  # Blue Shirt, White Pants
-        "expected_complements": {6},  # Yellow Shirt
-        "description": "Cool blues with a pop of color",
-        "available_items": [
-            1,
-            4,
-            5,
-            6,
-            11,
-            14,
-        ],  # Limited selection of items for this question
+        "expected_mains": {18, 16},  # emerald sweater, ruby cardigan
+        "expected_complements": {15},  #brown boots
+        "description": "Jewel tones",
+        "available_items": [6, 10, 11, 15, 16, 18]
     },
     {
         "id": 3,
