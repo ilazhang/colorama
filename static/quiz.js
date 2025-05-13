@@ -48,13 +48,13 @@ $(function () {
         const totalUsed = mains.length + complements.length;
 
         if (totalUsed >= totalSlots) {
-            $('#continue').removeClass('d-none');
+            $('#see-answer').removeClass('d-none');
         } else {
-            $('#continue').addClass('d-none');
+            $('#see-answer').addClass('d-none');
         }
     }
 
-    $('#continue').on('click', function () {
+    $('#see-answer').on('click', function () {
         const mainsParam = mains.join(',');
         const complementsParam = complements.join(',');
         window.location.href = `/quizanswer?mains=${encodeURIComponent(mainsParam)}&complements=${encodeURIComponent(complementsParam)}`;
