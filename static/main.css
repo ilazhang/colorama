@@ -143,7 +143,43 @@
     font-size: 1rem;
 }
 
+#next-question {
+    background-color: #A4C6E4;
+    color:black; 
+    border: .2rem solid #18365e;
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+#learn-more {
+    background-color: #f4f1e6;
+    color:black; 
+    border: .2rem solid #18365e;
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+#back-to-palette {
+    background-color: #f4f1e6;
+    color:black; 
+    border: .2rem solid #18365e;
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
 #see-answer {
+    background-color: #A4C6E4;
+    color:black; 
+    border: .2rem solid #18365e;
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+}
+
+#next-color {
     background-color: #A4C6E4;
     color:black; 
     border: .2rem solid #18365e;
