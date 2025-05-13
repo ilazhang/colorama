@@ -7,8 +7,8 @@ $(document).ready(function() {
       $('#lesson-' + currentLesson).addClass('active');
       $('.lesson-dot').removeClass('active');
       $('.lesson-dot[data-lesson="' + currentLesson + '"]').addClass('active');
-      $('#prev-lesson').prop('disabled', currentLesson === 1);
-      $('#next-lesson').prop('disabled', currentLesson === totalLessons);
+      $('#previous-lesson').prop('disabled', currentLesson === 1);
+      $('#blue-next-lesson').prop('disabled', currentLesson === totalLessons);
       
       const url = new URL(window.location);
       url.searchParams.set('lesson', currentLesson);
@@ -21,14 +21,14 @@ $(document).ready(function() {
       currentLesson = parseInt(lessonParam);
     }
     
-    $('#next-lesson').click(function() {
+    $('#blue-next-lesson').click(function() {
       if (currentLesson < totalLessons) {
         currentLesson++;
         updateLessonDisplay();
       }
     });
     
-    $('#prev-lesson').click(function() {
+    $('#previous-lesson').click(function() {
       if (currentLesson > 1) {
         currentLesson--;
         updateLessonDisplay();
