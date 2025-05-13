@@ -14,12 +14,13 @@
       {% if correct %}
         <div class="alert alert-success">
           <h4>Correct! 🎉</h4>
-          <p><strong>Answer:</strong> {{ description }}</p>
+          <p><strong>Palette:</strong> {{ description }}</p>
         </div>
       {% else %}
         <div class="alert alert-danger">
           <h4>Not quite right</h4>
           <p>Let's see what you got right and wrong:</p>
+          <p><strong>Palette:</strong> {{ description }}</p>
         </div>
       {% endif %}
       
