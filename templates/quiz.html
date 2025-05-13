@@ -27,23 +27,34 @@
         <div class="mb-4">
           <p><strong>Mains:</strong></p>
           <div class="d-flex gap-3">
+            {% for i in range(question['mains']) %}
             <div class="border border-dark rounded-circle main-display" style="width: 100px; height: 100px;"></div>
-            <div class="border border-dark rounded-circle main-display" style="width: 100px; height: 100px;"></div>
+            {% endfor %}
           </div>
         </div>
+        {% if question['complements'] > 0 %}
         <div>
           <p><strong>Complements:</strong></p>
-          <div class="border border-dark rounded-circle complement-display" style="width: 60px; height: 60px;"></div>
+          <div class="d-flex gap-3">
+            {% for i in range(question['complements']) %}
+            <div class="border border-dark rounded-circle complement-display" style="width: 60px; height: 60px;"></div>
+            {% endfor %}
+          </div>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
 
 <div id="closet" class="d-flex flex-wrap justify-content-center gap-3 bg-light p-4">
+    {% set seen_ids = [] %}
     {% for choice in question['choices'] %}
-    <div class="flex-shrink-0 quizbox" data-id="{{ choice.id }}" data-color="{{ choice.color }}">
-        <img src="{{ choice.image }}" class="w-100 h-100 object-fit-cover" title="{{ choice.name }}"/></img>
-    </div>
+        {% if choice.id not in seen_ids %}
+            <div class="flex-shrink-0 quizbox" data-id="{{ choice.id }}" data-color="{{ choice.color }}">
+                <img src="{{ choice.image }}" class="w-100 h-100 object-fit-cover" title="{{ choice.name }}"/></img>
+            </div>
+            {% set _ = seen_ids.append(choice.id) %}
+        {% endif %}
     {% endfor %}
 </div>
 

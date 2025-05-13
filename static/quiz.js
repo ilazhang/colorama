@@ -44,10 +44,14 @@ $(function () {
             }
         });
 
-        const totalSlots = mainDisplays.length + complementDisplays.length;
+        // Calculate required slots based on what's visible in the UI
+        const requiredMainSlots = mainDisplays.length;
+        const requiredComplementSlots = complementDisplays.length;
+        const totalRequiredSlots = requiredMainSlots + requiredComplementSlots;
+        
         const totalUsed = mains.length + complements.length;
 
-        if (totalUsed >= totalSlots) {
+        if (totalUsed >= totalRequiredSlots) {
             $('#see-answer').removeClass('d-none');
         } else {
             $('#see-answer').addClass('d-none');

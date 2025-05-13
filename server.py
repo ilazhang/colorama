@@ -153,12 +153,13 @@ quiz_qs = [
         "expected_complements": {7},  # Terracotta Hoodie
         "description": "Earth tones",
         "available_items": [
-            3,
-            7,
-            8,
-            9,
-            10,
-            13,
+            3,  # Tan Jacket
+            7,  # Terracotta Hoodie
+            8,  # Brown Pants
+            9,  # Cream Shirt
+            10, # Grey Sweatpants
+            13, # Maroon Scarf
+            5,  # White Pants
         ],  # Limited selection of items for this question
     },
     {
@@ -168,7 +169,15 @@ quiz_qs = [
         "expected_mains": {18, 16},  # emerald sweater, ruby cardigan
         "expected_complements": {15},  # brown boots
         "description": "Jewel tones",
-        "available_items": [6, 10, 11, 15, 16, 18],
+        "available_items": [
+            6,  # Yellow Shirt
+            10, # Grey Sweatpants
+            11, # Light Green Sweatpants
+            15, # Brown Boots
+            16, # Ruby Cardigan
+            18, # Emerald Sweater
+            2,  # Black Leather Jacket
+        ],
     },
     {
         "id": 3,
@@ -178,11 +187,13 @@ quiz_qs = [
         "expected_complements": {23},  # white shoes
         "description": "Pastels",
         "available_items": [
-            2,
-            22,
-            15,
-            23,
-            21,
+            2,  # Black Leather Jacket
+            22, # Pink Shorts
+            15, # Brown Boots
+            23, # White Shoes
+            21, # Pastel Blue Button Up
+            7,  # Terracotta Hoodie
+            19, # Pink Button Up
         ],
     },
     {
@@ -193,11 +204,13 @@ quiz_qs = [
         "expected_complements": {},  # none
         "description": "Monochrome",
         "available_items": [
-            2,
-            5,
-            6,
-            12,
-            8,
+            2,  # Black Leather Jacket
+            5,  # White Pants
+            6,  # Yellow Shirt
+            12, # Light Pink Pants
+            8,  # Brown Pants
+            14, # Black Shorts
+            20, # White Tee
         ],  # Limited selection of items for this question
     },
 ]
@@ -424,11 +437,14 @@ def quiz(question_id=None):
     # Add only the specified clothing items to the question
     question_with_items = question.copy()
     available_item_ids = question.get("available_items", list(clothing_items.keys()))
-    question_with_items["choices"] = [
-        clothing_items[item_id]
-        for item_id in available_item_ids
-        if item_id in clothing_items
-    ]
+    
+    # Ensure no duplicate IDs in available_item_ids
+    unique_item_ids = []
+    for item_id in available_item_ids:
+        if item_id not in unique_item_ids and item_id in clothing_items:
+            unique_item_ids.append(item_id)
+    
+    question_with_items["choices"] = [clothing_items[item_id] for item_id in unique_item_ids]
 
     return render_template(
         "quiz.html",
@@ -461,7 +477,11 @@ def parse():
     expected_complements = question["expected_complements"]
 
     mains_correct = mains == expected_mains
-    complements_correct = complements == expected_complements
+    # Handle the case where no complements are expected
+    if not expected_complements:
+        complements_correct = not complements  # Should be empty
+    else:
+        complements_correct = complements == expected_complements
     correct = mains_correct and complements_correct
 
     # Update score if correct
